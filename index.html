@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check if a Crypto Wallet is Safe – Free Risk Scanner</title>
+    <meta name="description" content="Paste any Ethereum wallet address and instantly check if it’s flagged in public scam databases.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Check if a Crypto Wallet is Safe – Free Risk Scanner</h1>
+    </header>
+
+    <main>
+        <section id="wallet-checker">
+            <input type="text" id="walletAddress" placeholder="Enter Ethereum wallet address (e.g., 0x...)">
+            <button id="checkWalletBtn">Check Wallet</button>
+        </section>
+
+        <section id="results">
+            <h2>Scan Results:</h2>
+            <div id="results-content">
+                <p>Please enter a wallet address and click "Check Wallet".</p>
+            </div>
+        </section>
+
+        <section id="disclaimer" style="margin-top: 1rem; padding: 1rem; background-color: #fff3cd; border-left: 5px solid #ffa502; border-radius: 4px;">
+            <strong>Disclaimer:</strong> Just because a wallet does not appear in this scanner does <em>not</em> mean it is safe. Always double-check sources, avoid suspicious links, and use hardware wallets or trusted platforms to secure your assets.
+        </section>
+
+        <section id="cta">
+            <p>Install our Chrome extension to monitor all wallet interactions in real time.</p>
+        </section>
+
+        <section id="recent-detections" style="margin-top: 2rem; padding: 1rem; background-color: #eef9f1; border-left: 5px solid #2ecc71; border-radius: 4px;">
+            <h3>Recently Detected Addresses</h3>
+            <ul id="recent-addresses" style="list-style: none; padding-left: 0;"></ul>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: #555;">
+                Actually, we have <strong>4,500+</strong> flagged addresses. <br>
+                <span id="last-updated">Last update: loading...</span>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Is This Wallet Safe? Tool. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

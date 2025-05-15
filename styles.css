@@ -1,0 +1,148 @@
+/* General Body Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Main Content Styles */
+main {
+    flex-grow: 1;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Input and Button Styles */
+#wallet-checker input[type="text"] {
+    width: calc(100% - 130px);
+    padding: 0.8rem;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#wallet-checker button {
+    padding: 0.8rem 1.2rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#wallet-checker button:hover {
+    background-color: #2980b9;
+}
+
+/* Results Section Styles */
+#results h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 0.5rem;
+}
+
+#results-content p {
+    margin-bottom: 0.5rem;
+}
+
+#results-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+#results-content li {
+    margin-bottom: 0.3rem;
+}
+
+/* CTA Section Styles */
+#cta {
+    text-align: center;
+    padding: 1rem;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+}
+
+#cta p {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #34495e;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+}
+
+/* AdSense Placeholder Styles (optional, for visibility during development) */
+.adsense-top-banner,
+.adsense-results-block {
+    /* background-color: #eee; */ /* Uncomment to see placeholders */
+    /* border: 1px dashed #ccc; */ /* Uncomment to see placeholders */
+    /* min-height: 90px; */ /* Adjust as needed */
+    /* display: flex; */ /* Uncomment to see placeholders */
+    /* align-items: center; */ /* Uncomment to see placeholders */
+    /* justify-content: center; */ /* Uncomment to see placeholders */
+    /* color: #999; */ /* Uncomment to see placeholders */
+    /* font-style: italic; */ /* Uncomment to see placeholders */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        width: 95%;
+        margin: 1rem auto;
+        padding: 0.8rem;
+    }
+
+    #wallet-checker input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #wallet-checker button {
+        width: 100%;
+    }
+}
+

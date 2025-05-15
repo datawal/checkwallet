@@ -1,0 +1,110 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const walletAddressInput = document.getElementById("walletAddress");
+    const checkWalletBtn = document.getElementById("checkWalletBtn");
+    const resultsContent = document.getElementById("results-content");
+
+    checkWalletBtn.addEventListener("click", async () => {
+        const address = walletAddressInput.value.trim();
+        if (!address) {
+            resultsContent.innerHTML = "<p style='color: red;'>Please enter an Ethereum wallet address.</p>";
+            return;
+        }
+
+        if (!/^0x[a-fA-F0-9]{40}$/.test(address)) {
+            resultsContent.innerHTML = "<p style='color: red;'>Invalid Ethereum wallet address format.</p>";
+            return;
+        }
+
+        resultsContent.innerHTML = "<p>Checking wallet... Please wait.</p>";
+
+        try {
+            const response = await fetch("scamsniffer_mock.json");
+            const mockData = await response.json();
+
+            const addressLower = address.toLowerCase();
+            const result = {
+                scamsniffer_tags: [],
+                chainabuse_reports: [],
+                is_safe: true,
+                messages: []
+            };
+
+            // ScamSniffer mock check
+            if (mockData.ethereum[addressLower]) {
+                result.scamsniffer_tags.push(mockData.ethereum[addressLower]);
+                result.is_safe = false;
+                result.messages.push("Tagged by ScamSniffer (mock data)");
+            } else if (mockData.common[addressLower]) {
+                result.scamsniffer_tags.push(mockData.common[addressLower]);
+                result.is_safe = false;
+                result.messages.push("Tagged by ScamSniffer (common, mock data)");
+            }
+
+            if (result.is_safe && result.messages.length === 0) {
+                result.messages.push("✅ No threats found for this wallet");
+            } else if (result.is_safe) {
+                result.messages.push("✅ No direct threats found based on available checks.");
+            }
+
+            displayResults(result);
+
+        } catch (error) {
+            console.error("Error reading mock data:", error);
+            resultsContent.innerHTML = `<p style='color: red;'>Error loading data: ${error.message}</p>`;
+        }
+    });
+
+    function displayResults(data) {
+        let html = "";
+        if (data.messages && data.messages.length > 0) {
+            data.messages.forEach(msg => {
+                if (msg.startsWith("✅")) {
+                    html += `<p style='color: green;'>${msg}</p>`;
+                } else if (msg.includes("Tagged by ScamSniffer")) {
+                    html += `<p style='color: orange;'><strong>Flag:</strong> ${msg}</p>`;
+                } else {
+                    html += `<p>${msg}</p>`;
+                }
+            });
+        }
+
+        if (data.scamsniffer_tags && data.scamsniffer_tags.length > 0) {
+            html += "<h4>ScamSniffer Tags:</h4><ul>";
+            data.scamsniffer_tags.forEach(tag => {
+                html += `<li>${tag}</li>`;
+            });
+            html += "</ul>";
+        }
+
+        if (!html) {
+            html = "<p>No information found or an unexpected error occurred.</p>";
+        }
+
+        resultsContent.innerHTML = html;
+    }
+
+    // Load recent detections
+    fetch("scamsniffer_mock.json")
+        .then(res => res.json())
+        .then(data => {
+            const recentList = document.getElementById("recent-addresses");
+            const updatedSpan = document.getElementById("last-updated");
+
+            const allAddresses = [
+                ...Object.keys(data.ethereum || {}),
+                ...Object.keys(data.common || {})
+            ];
+
+            const recentAddresses = allAddresses.slice(0, 10);
+            recentAddresses.forEach(addr => {
+                const li = document.createElement("li");
+                li.textContent = addr;
+                recentList.appendChild(li);
+            });
+
+            updatedSpan.textContent = "Last update: May 10, 2025";
+        })
+        .catch(err => {
+            console.error("Error loading recent addresses:", err);
+        });
+});
