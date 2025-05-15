@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (flaggedList.includes(addressLower)) {
                 result.scamsniffer_tags.push("Flagged address");
                 result.is_safe = false;
-                result.messages.push("Tagged in ScamSniffer (flat list)");
+                result.messages.push("<div style='background-color:#ffcccc;padding:1rem;border-left:5px solid red;border-radius:4px;font-weight:bold;color:#900;'>⚠️ Address Flagged</div>");
+                result.messages.push("<div style='margin-top:0.5rem;font-size:0.9rem;color:#666;'>Source: ScamSniffer</div>");
             } else {
                 result.messages.push("✅ No threats found for this wallet");
             }
@@ -52,10 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
             data.messages.forEach(msg => {
                 if (msg.startsWith("✅")) {
                     html += `<p style='color: green;'>${msg}</p>`;
-                } else if (msg.includes("Tagged")) {
-                    html += `<p style='color: orange;'><strong>Flag:</strong> ${msg}</p>`;
                 } else {
-                    html += `<p>${msg}</p>`;
+                    html += `${msg}`;
                 }
             });
         }
