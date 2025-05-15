@@ -21,29 +21,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("scamsniffer_mock.json");
             const mockData = await response.json();
 
+            const flaggedList = (mockData.address || []).map(a => a.toLowerCase());
             const addressLower = address.toLowerCase();
+
             const result = {
                 scamsniffer_tags: [],
-                chainabuse_reports: [],
                 is_safe: true,
                 messages: []
             };
 
-            // ScamSniffer mock check
-            if (mockData.ethereum[addressLower]) {
-                result.scamsniffer_tags.push(mockData.ethereum[addressLower]);
+            if (flaggedList.includes(addressLower)) {
+                result.scamsniffer_tags.push("Flagged address");
                 result.is_safe = false;
-                result.messages.push("Tagged by ScamSniffer (mock data)");
-            } else if (mockData.common[addressLower]) {
-                result.scamsniffer_tags.push(mockData.common[addressLower]);
-                result.is_safe = false;
-                result.messages.push("Tagged by ScamSniffer (common, mock data)");
-            }
-
-            if (result.is_safe && result.messages.length === 0) {
+                result.messages.push("Tagged in ScamSniffer (flat list)");
+            } else {
                 result.messages.push("✅ No threats found for this wallet");
-            } else if (result.is_safe) {
-                result.messages.push("✅ No direct threats found based on available checks.");
             }
 
             displayResults(result);
@@ -60,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             data.messages.forEach(msg => {
                 if (msg.startsWith("✅")) {
                     html += `<p style='color: green;'>${msg}</p>`;
-                } else if (msg.includes("Tagged by ScamSniffer")) {
+                } else if (msg.includes("Tagged")) {
                     html += `<p style='color: orange;'><strong>Flag:</strong> ${msg}</p>`;
                 } else {
                     html += `<p>${msg}</p>`;
@@ -90,13 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const recentList = document.getElementById("recent-addresses");
             const updatedSpan = document.getElementById("last-updated");
 
-            const allAddresses = [
-                ...Object.keys(data.ethereum || {}),
-                ...Object.keys(data.common || {})
-            ];
-
-            const recentAddresses = allAddresses.slice(0, 10);
-            recentAddresses.forEach(addr => {
+            const allAddresses = (data.address || []).slice(0, 10);
+            allAddresses.forEach(addr => {
                 const li = document.createElement("li");
                 li.textContent = addr;
                 recentList.appendChild(li);
