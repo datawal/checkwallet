@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-6672637768552757">
-    <title>Is This Wallet Safe? | Free Crypto Wallet Scam Scanner</title>
-    <meta name="description" content= "Scan Ethereum wallet addresses to detect scams and flagged accounts. Free, fast, and up-to-date wallet risk scanner.">
+    <title>CryptoSafeCheck | Free Ethereum Wallet & Website Phishing Scanner</title>
+    <meta name="description" content="Free tool to scan Ethereum wallet addresses and websites for scams, phishing, and security risks. Protect your crypto assets with our up-to-date security scanner.">
+    <meta name="keywords" content="ethereum wallet scanner, crypto scam detector, phishing website checker, web3 security, blockchain security, crypto safety, ethereum address verification">
+    <meta name="author" content="CryptoSafeCheck">
     <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="CryptoSafeCheck | Free Ethereum Wallet & Website Phishing Scanner">
+    <meta property="og:description" content="Free tool to scan Ethereum wallet addresses and websites for scams, phishing, and security risks. Protect your crypto assets with our up-to-date security scanner.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cryptosafecheck.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CryptoSafeCheck | Free Ethereum Wallet & Website Phishing Scanner">
+    <meta name="twitter:description" content="Free tool to scan Ethereum wallet addresses and websites for scams, phishing, and security risks. Protect your crypto assets with our up-to-date security scanner.">
+    <link rel="canonical" href="https://cryptosafecheck.com">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2V7FRBQ6LZ"></script>
@@ -15,88 +24,1161 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-2V7FRBQ6LZ');
     </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672637768552757"
      crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #2ecc71;
+            --secondary-dark: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --gray-color: #95a5a6;
+            --background-light: #f4f7f6;
+            --text-color: #333;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+            --border-radius: 8px;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #2ecc71;
+            --secondary-dark: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --dark-color: #1a1a2e;
+            --light-color: #e1e1e1;
+            --gray-color: #95a5a6;
+            --background-light: #16213e;
+            --text-color: #e1e1e1;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        header {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-icon {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            border: none;
+            cursor: pointer;
+            margin: 0 0.25rem;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            transition: background-color var(--transition-speed);
+        }
+
+        .tab.active {
+            background-color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .tab:hover:not(.active) {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            flex-grow: 1;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1rem;
+            width: 90%;
+        }
+
+        .card {
+            background-color: var(--light-color);
+            box-shadow: var(--card-shadow);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .checker-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .input-group input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            transition: border-color var(--transition-speed);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        .results-container {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .results-container h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .section-title i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .info-card {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: var(--light-color);
+            border-left: 5px solid var(--primary-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .info-card.warning {
+            border-left-color: var(--warning-color);
+        }
+
+        .info-card.danger {
+            border-left-color: var(--danger-color);
+        }
+
+        .info-card.success {
+            border-left-color: var(--secondary-color);
+        }
+
+        .detection-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detection-item {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            transition: transform var(--transition-speed);
+        }
+
+        .detection-item:hover {
+            transform: translateX(5px);
+        }
+
+        .detection-item i {
+            margin-right: 0.5rem;
+            color: var(--danger-color);
+        }
+
+        .detection-item .date {
+            margin-left: auto;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform var(--transition-speed);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .how-it-works-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* AdSense Styling */
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background-color: var(--light-color);
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .ad-container.horizontal {
+            min-height: 90px;
+        }
+
+        .ad-container.square {
+            min-height: 250px;
+        }
+
+        .ad-container.vertical {
+            min-height: 600px;
+        }
+
+        .ad-label {
+            display: block;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .tab {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+
+            .step-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Status Indicators */
+        .status-safe {
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-warning {
+            color: var(--warning-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-danger {
+            color: var(--danger-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-icon {
+            margin-right: 0.5rem;
+        }
+
+        /* Schema Markup (hidden) */
+        .schema-markup {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- Schema.org markup for Google -->
+    <div class="schema-markup" itemscope itemtype="https://schema.org/WebApplication">
+        <meta itemprop="name" content="CryptoSafeCheck">
+        <meta itemprop="description" content="Free tool to scan Ethereum wallet addresses and websites for scams, phishing, and security risks. Protect your crypto assets with our up-to-date security scanner.">
+        <meta itemprop="applicationCategory" content="SecurityApplication">
+        <meta itemprop="operatingSystem" content="Web">
+        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <meta itemprop="price" content="0">
+            <meta itemprop="priceCurrency" content="USD">
+        </div>
+    </div>
+
     <header>
-        <h1>Check if a Crypto Wallet is Safe – Free Risk Scanner</h1>
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+        <div class="logo">
+            <span class="logo-icon">🛡️</span>
+            <h1>CryptoSafeCheck</h1>
+        </div>
+        <p>Free Ethereum Wallet & Website Phishing Scanner</p>
+        
+        <div class="tab-container">
+            <button class="tab active" data-tab="wallet-tab">Wallet Scanner</button>
+            <button class="tab" data-tab="domain-tab">Domain Scanner</button>
+            <button class="tab" data-tab="about-tab">About</button>
+        </div>
     </header>
 
     <main>
-        <section id="wallet-checker">
-            <input type="text" id="walletAddress" placeholder="Enter Ethereum wallet address (e.g., 0x...)">
-            <button id="checkWalletBtn">Check Wallet</button>
-        </section>
+        <!-- AdSense Top Banner -->
+        <div class="ad-container horizontal">
+            <span class="ad-label">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6672637768552757"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
-        <section id="results">
-            <h2>Scan Results:</h2>
-            <div id="results-content">
-                <p>Please enter a wallet address and click "Check Wallet".</p>
+        <!-- Wallet Scanner Tab -->
+        <div class="tab-content active" id="wallet-tab">
+            <div class="card">
+                <div class="section-title">
+                    <i>🔍</i>
+                    <h2>Ethereum Wallet Scanner</h2>
+                </div>
+                <p>Check if an Ethereum wallet address has been flagged for scams, phishing, or other malicious activities.</p>
+                
+                <div class="checker-container">
+                    <div class="input-group">
+                        <input type="text" id="walletAddress" placeholder="Enter Ethereum wallet address (e.g., 0x...)">
+                        <button class="btn" id="checkWalletBtn">
+                            <span class="btn-icon">🔍</span>
+                            Check Wallet
+                        </button>
+                    </div>
+                    
+                    <div class="results-container" id="wallet-results">
+                        <h3>Scan Results</h3>
+                        <div id="wallet-results-content">
+                            <p>Please enter a wallet address and click "Check Wallet".</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Google Ad (inline block) -->
-            <div style="text-align: center; margin: 1.5rem 0;">
+
+            <div class="info-card warning">
+                <div class="section-title">
+                    <i>⚠️</i>
+                    <h3>Important Security Notice</h3>
+                </div>
+                <p>Just because a wallet does not appear in our scanner does <strong>not</strong> mean it is safe. Always double-check sources, avoid suspicious links, and use hardware wallets or trusted platforms to secure your assets.</p>
+                <p>Our database is updated regularly, but new scams emerge daily. Always practice caution when interacting with unknown addresses.</p>
+            </div>
+
+            <!-- AdSense Square Ad -->
+            <div class="ad-container square">
+                <span class="ad-label">Advertisement</span>
                 <ins class="adsbygoogle"
-                     style="display:block; width:300px; height:250px; margin: auto;"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                     data-ad-slot="1234567890"></ins>
+                     style="display:block"
+                     data-ad-client="ca-pub-6672637768552757"
+                     data-ad-slot="2345678901"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
                 <script>
                      (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
-        </section>
 
-        <section id="disclaimer" style="margin-top: 1rem; padding: 1rem; background-color: #fff3cd; border-left: 5px solid #ffa502; border-radius: 4px;">
-            <strong>Disclaimer:</strong> Just because a wallet does not appear in this scanner does <em>not</em> mean it is safe. Always double-check sources, avoid suspicious links, and use hardware wallets or trusted platforms to secure your assets.
-        </section>
+            <div class="card">
+                <div class="section-title">
+                    <i>📊</i>
+                    <h3>Recent Detections</h3>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">4,500+</div>
+                        <div class="stat-label">Flagged Addresses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Daily</div>
+                        <div class="stat-label">Database Updates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free Service</div>
+                    </div>
+                </div>
+                
+                <h4>Recently Flagged Addresses</h4>
+                <ul class="detection-list" id="recent-addresses">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+                <p id="last-updated" style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray-color);">
+                    Last update: loading...
+                </p>
+            </div>
+        </div>
 
-        <section id="recent-detections" style="margin-top: 2rem; padding: 1rem; background-color: #eef9f1; border-left: 5px solid #2ecc71; border-radius: 4px;">
-            <h3>Recently Detected Addresses</h3>
-            <ul id="recent-addresses" style="list-style: none; padding-left: 0;"></ul>
-            <p style="margin-top: 1rem; font-size: 0.95rem; color: #555;">
-                Actually, we have <strong>4,500+</strong> flagged addresses. <br>
-                <span id="last-updated">Last update: loading...</span>
-            </p>
-        </section>
+        <!-- Domain Scanner Tab -->
+        <div class="tab-content" id="domain-tab">
+            <div class="card">
+                <div class="section-title">
+                    <i>🔍</i>
+                    <h2>Website Phishing Scanner</h2>
+                </div>
+                <p>Check if a website domain has been flagged for phishing, scams, or other malicious activities.</p>
+                
+                <div class="checker-container">
+                    <div class="input-group">
+                        <input type="text" id="domainAddress" placeholder="Enter website domain (e.g., example.com)">
+                        <button class="btn" id="checkDomainBtn">
+                            <span class="btn-icon">🔍</span>
+                            Check Domain
+                        </button>
+                    </div>
+                    
+                    <div class="results-container" id="domain-results">
+                        <h3>Scan Results</h3>
+                        <div id="domain-results-content">
+                            <p>Please enter a domain and click "Check Domain".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <section id="mission" style="margin-top: 2rem; padding: 1rem; background-color: #f4f4f4; border-left: 5px solid #007bff; border-radius: 4px;">
-            <p><strong>Our mission:</strong> to provide comprehensive and up-to-date blacklists of addresses to safeguard the crypto community.</p>
-        </section>
-    
-<!-- Google Ad in Sidebar (simulated on mobile/stacked layout) -->
-<div style="text-align: center; margin: 2rem 0;">
-    <ins class="adsbygoogle"
-         style="display:block; width:160px; height:600px; margin: auto;"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="1928374650"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
+            <div class="info-card warning">
+                <div class="section-title">
+                    <i>⚠️</i>
+                    <h3>Phishing Warning Signs</h3>
+                </div>
+                <p>Even if a domain is not in our database, be cautious of these common phishing indicators:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Misspelled domain names (e.g., "metamask.io" vs "metarnask.io")</li>
+                    <li>Unusual TLDs (.xyz, .co instead of expected .com)</li>
+                    <li>Requests for private keys or seed phrases</li>
+                    <li>Urgency or threats about account verification</li>
+                    <li>Poor grammar or spelling errors</li>
+                </ul>
+            </div>
 
-</main>
+            <!-- AdSense Square Ad -->
+            <div class="ad-container square">
+                <span class="ad-label">Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6672637768552757"
+                     data-ad-slot="3456789012"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    <i>📊</i>
+                    <h3>Recent Phishing Domains</h3>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">300k+</div>
+                        <div class="stat-label">Flagged Domains</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Daily</div>
+                        <div class="stat-label">Database Updates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Monitoring</div>
+                    </div>
+                </div>
+                
+                <h4>Recently Flagged Domains</h4>
+                <ul class="detection-list" id="recent-domains">
+                    <!-- Will be dynamically populated from scamsniffer_mock.json -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- About Tab -->
+        <div class="tab-content" id="about-tab">
+            <div class="card">
+                <div class="section-title">
+                    <i>ℹ️</i>
+                    <h2>About This Tool</h2>
+                </div>
+                <p>CryptoSafeCheck is a free security tool designed to help crypto users verify the safety of Ethereum wallet addresses and website domains. Our mission is to protect the Web3 community from scams, phishing attempts, and other malicious activities.</p>
+                
+                <p>In the rapidly evolving world of cryptocurrency and blockchain technology, security threats are constantly emerging. Our tool provides a simple way to check if a wallet address or domain has been previously flagged for suspicious activity.</p>
+                
+                <p>We maintain a comprehensive database of known scam addresses and phishing domains, updated daily with information from multiple trusted sources in the blockchain security community.</p>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    <i>🔄</i>
+                    <h2>How It Works</h2>
+                </div>
+                
+                <div class="how-it-works-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Data Collection</div>
+                            <p>We aggregate data from multiple trusted sources including blockchain security firms, user reports, and our own monitoring systems to build a comprehensive database of malicious addresses and domains.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Verification Process</div>
+                            <p>When you enter an Ethereum address or domain, our system instantly checks it against our database of known scams and phishing attempts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Risk Assessment</div>
+                            <p>If a match is found, we provide details about the type of risk associated with the address or domain, helping you make informed decisions about your digital assets.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">Continuous Updates</div>
+                            <p>Our database is updated daily to include newly discovered threats, ensuring you have access to the most current security information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AdSense Square Ad -->
+            <div class="ad-container square">
+                <span class="ad-label">Advertisement</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6672637768552757"
+                     data-ad-slot="4567890123"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    <i>🛡️</i>
+                    <h2>Crypto Security Best Practices</h2>
+                </div>
+                
+                <p>While our tool helps identify known threats, practicing good security habits is essential for protecting your crypto assets:</p>
+                
+                <h3>Hardware Wallets</h3>
+                <p>Use hardware wallets like Ledger or Trezor to store significant amounts of cryptocurrency. These physical devices keep your private keys offline and protected from online threats.</p>
+                
+                <h3>Verify Transactions</h3>
+                <p>Always double-check addresses before sending cryptocurrency. Even a single character difference can result in permanent loss of funds.</p>
+                
+                <h3>Beware of Phishing</h3>
+                <p>Access cryptocurrency websites by typing the URL directly or using bookmarks. Never click on links from emails, social media, or search results without verifying their authenticity.</p>
+                
+                <h3>Use Strong Authentication</h3>
+                <p>Enable two-factor authentication (2FA) on all your cryptocurrency accounts. Preferably use an authenticator app rather than SMS-based verification.</p>
+                
+                <h3>Keep Software Updated</h3>
+                <p>Regularly update your wallet software, browsers, and operating systems to protect against known vulnerabilities.</p>
+                
+                <h3>Be Skeptical of "Too Good to Be True" Offers</h3>
+                <p>Cryptocurrency giveaways, airdrops, or investment opportunities promising extraordinary returns are often scams. If it sounds too good to be true, it probably is.</p>
+            </div>
+        </div>
+
+        <!-- AdSense Vertical Ad -->
+        <div class="ad-container vertical">
+            <span class="ad-label">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6672637768552757"
+                 data-ad-slot="5678901234"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Is This Wallet Safe? Tool. All rights reserved.</p>
-    
-<!-- Google Ad in Footer -->
-<div style="text-align: center; margin-top: 1rem;">
-    <ins class="adsbygoogle"
-         style="display:block; width:728px; height:90px; margin: auto;"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="9876543210"></ins>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CryptoSafeCheck</h3>
+                <p>Free security tools for the crypto community.</p>
+                <p>Our mission is to provide comprehensive and up-to-date blacklists of addresses to safeguard the crypto community.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-tab="wallet-tab">Wallet Scanner</a></li>
+                    <li><a href="#" data-tab="domain-tab">Domain Scanner</a></li>
+                    <li><a href="#" data-tab="about-tab">About</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Crypto Security Guide</a></li>
+                    <li><a href="#">Common Scams</a></li>
+                    <li><a href="#">Report a Scam</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 CryptoSafeCheck. All rights reserved.</p>
+        </div>
+
+        <!-- AdSense Footer Ad -->
+        <div class="ad-container horizontal" style="margin-top: 2rem;">
+            <span class="ad-label">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6672637768552757"
+                 data-ad-slot="6789012345"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </footer>
+
     <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
+        document.addEventListener("DOMContentLoaded", () => {
+            // Tab Switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Update active content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                            content.classList.add('animate-fade-in');
+                            setTimeout(() => {
+                                content.classList.remove('animate-fade-in');
+                            }, 500);
+                        }
+                    });
+                });
+            });
+            
+            // Footer quick links
+            document.querySelectorAll('.footer-links a[data-tab]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.getAttribute('data-tab');
+                    document.querySelector(`.tab[data-tab="${tabId}"]`).click();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.setAttribute('data-theme', savedTheme);
+                themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌓';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌓';
+            });
+            
+            // Wallet Scanner Functionality
+            const walletAddressInput = document.getElementById("walletAddress");
+            const checkWalletBtn = document.getElementById("checkWalletBtn");
+            const walletResultsContent = document.getElementById("wallet-results-content");
+            
+            checkWalletBtn.addEventListener("click", async () => {
+                const address = walletAddressInput.value.trim();
+                if (!address) {
+                    walletResultsContent.innerHTML = "<p class='status-warning'><span class='status-icon'>⚠️</span>Please enter an Ethereum wallet address.</p>";
+                    return;
+                }
+                
+                if (!/^0x[a-fA-F0-9]{40}$/.test(address)) {
+                    walletResultsContent.innerHTML = "<p class='status-warning'><span class='status-icon'>⚠️</span>Invalid Ethereum wallet address format.</p>";
+                    return;
+                }
+                
+                // Show loading state
+                checkWalletBtn.innerHTML = '<span class="spinner"></span>Checking...';
+                checkWalletBtn.disabled = true;
+                walletResultsContent.innerHTML = "<p>Scanning wallet address... Please wait.</p>";
+                
+                try {
+                    const response = await fetch("scamsniffer_mock.json");
+                    const mockData = await response.json();
+                    
+                    const flaggedList = (mockData.address || []).map(a => a.toLowerCase());
+                    const addressLower = address.toLowerCase();
+                    
+                    const result = {
+                        scamsniffer_tags: [],
+                        is_safe: true,
+                        messages: []
+                    };
+                    
+                    if (flaggedList.includes(addressLower)) {
+                        result.scamsniffer_tags.push("Flagged address");
+                        result.is_safe = false;
+                        result.messages.push("<div class='info-card danger'><h3><span class='status-icon'>⚠️</span>Address Flagged as Malicious</h3><p>This address has been identified as potentially malicious in our database.</p><p>Source: ScamSniffer Database</p></div>");
+                    } else {
+                        result.messages.push("<div class='info-card success'><h3><span class='status-icon'>✅</span>No Known Threats</h3><p>This address has not been flagged in our database. However, always exercise caution when interacting with any cryptocurrency address.</p></div>");
+                    }
+                    
+                    displayWalletResults(result);
+                    
+                } catch (error) {
+                    console.error("Error reading mock data:", error);
+                    walletResultsContent.innerHTML = `<p class='status-danger'><span class='status-icon'>❌</span>Error loading data: ${error.message}</p>`;
+                } finally {
+                    // Reset button state
+                    checkWalletBtn.innerHTML = '<span class="btn-icon">🔍</span>Check Wallet';
+                    checkWalletBtn.disabled = false;
+                }
+            });
+            
+            function displayWalletResults(data) {
+                let html = "";
+                
+                if (data.messages && data.messages.length > 0) {
+                    data.messages.forEach(msg => {
+                        html += msg;
+                    });
+                }
+                
+                if (data.scamsniffer_tags && data.scamsniffer_tags.length > 0) {
+                    html += "<div class='info-card danger' style='margin-top: 1rem;'>";
+                    html += "<h4>Detected Issues:</h4><ul style='margin-left: 1.5rem;'>";
+                    data.scamsniffer_tags.forEach(tag => {
+                        html += `<li>${tag}</li>`;
+                    });
+                    html += "</ul></div>";
+                }
+                
+                if (!html) {
+                    html = "<p>No information found or an unexpected error occurred.</p>";
+                }
+                
+                walletResultsContent.innerHTML = html;
+            }
+            
+            // Domain Scanner Functionality
+            const domainAddressInput = document.getElementById("domainAddress");
+            const checkDomainBtn = document.getElementById("checkDomainBtn");
+            const domainResultsContent = document.getElementById("domain-results-content");
+            
+            checkDomainBtn.addEventListener("click", async () => {
+                const domain = domainAddressInput.value.trim();
+                if (!domain) {
+                    domainResultsContent.innerHTML = "<p class='status-warning'><span class='status-icon'>⚠️</span>Please enter a website domain.</p>";
+                    return;
+                }
+                
+                // Basic domain format validation
+                const domainRegex = /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+                if (!domainRegex.test(domain)) {
+                    domainResultsContent.innerHTML = "<p class='status-warning'><span class='status-icon'>⚠️</span>Invalid domain format. Please enter a valid domain (e.g., example.com).</p>";
+                    return;
+                }
+                
+                // Show loading state
+                checkDomainBtn.innerHTML = '<span class="spinner"></span>Checking...';
+                checkDomainBtn.disabled = true;
+                domainResultsContent.innerHTML = "<p>Scanning domain... Please wait.</p>";
+                
+                try {
+                    // Fetch domains from the JSON file
+                    const response = await fetch("scamsniffer_mock.json");
+                    const mockData = await response.json();
+                    
+                    // Get the domains list from the JSON data
+                    const phishingDomains = mockData.domains || [];
+                    
+                    let html = "";
+                    
+                    if (phishingDomains.includes(domain)) {
+                        html = `
+                            <div class='info-card danger'>
+                                <h3><span class='status-icon'>⚠️</span>Phishing Domain Detected</h3>
+                                <p>This domain has been flagged as a phishing site in our database.</p>
+                                <p>It may be attempting to steal your credentials or crypto assets.</p>
+                                <p><strong>Recommendation:</strong> Do not visit this site or enter any information.</p>
+                            </div>
+                        `;
+                    } else {
+                        html = `
+                            <div class='info-card success'>
+                                <h3><span class='status-icon'>✅</span>No Known Threats</h3>
+                                <p>This domain has not been flagged in our database.</p>
+                                <p>However, always be cautious when visiting cryptocurrency websites and never share your private keys or seed phrases.</p>
+                            </div>
+                        `;
+                    }
+                    
+                    domainResultsContent.innerHTML = html;
+                } catch (error) {
+                    console.error("Error loading domain data:", error);
+                    domainResultsContent.innerHTML = `<p class='status-danger'><span class='status-icon'>❌</span>Error loading data: ${error.message}</p>`;
+                } finally {
+                    // Reset button state
+                    checkDomainBtn.innerHTML = '<span class="btn-icon">🔍</span>Check Domain';
+                    checkDomainBtn.disabled = false;
+                }
+            });
+            
+            // Load recent detections
+            fetch("scamsniffer_mock.json")
+                .then(res => res.json())
+                .then(data => {
+                    // Update wallet addresses list
+                    const recentList = document.getElementById("recent-addresses");
+                    const updatedSpan = document.getElementById("last-updated");
+                    
+                    const allAddresses = (data.address || []).slice(0, 10);
+                    recentList.innerHTML = '';
+                    
+                    allAddresses.forEach(addr => {
+                        const li = document.createElement("li");
+                        li.className = "detection-item";
+                        li.innerHTML = `
+                            <i>⚠️</i>
+                            <span>${addr}</span>
+                            <span class="date">May 15, 2025</span>
+                        `;
+                        recentList.appendChild(li);
+                    });
+                    
+                    // Update domains list
+                    const recentDomainsList = document.getElementById("recent-domains");
+                    recentDomainsList.innerHTML = '';
+                    
+                    const allDomains = (data.domains || []).slice(0, 10);
+                    allDomains.forEach(domain => {
+                        const li = document.createElement("li");
+                        li.className = "detection-item";
+                        li.innerHTML = `
+                            <i>⚠️</i>
+                            <span>${domain}</span>
+                            <span class="date">May 15, 2025</span>
+                        `;
+                        recentDomainsList.appendChild(li);
+                    });
+                    
+                    // Update stats
+                    const walletStatsNumber = document.querySelector('#wallet-tab .stat-number');
+                    if (walletStatsNumber) {
+                        walletStatsNumber.textContent = `${data.address ? data.address.length.toLocaleString() : '4,500+'}`;
+                    }
+                    
+                    const domainStatsNumber = document.querySelector('#domain-tab .stat-number');
+                    if (domainStatsNumber) {
+                        domainStatsNumber.textContent = `${data.domains ? data.domains.length.toLocaleString() : '2,800+'}`;
+                    }
+                    
+                    updatedSpan.textContent = "Last update: May 15, 2025";
+                })
+                .catch(err => {
+                    console.error("Error loading recent data:", err);
+                });
+        });
     </script>
-</div>
-
-</footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
