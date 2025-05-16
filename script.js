@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+ocument.addEventListener("DOMContentLoaded", () => {
     const walletAddressInput = document.getElementById("walletAddress");
     const checkWalletBtn = document.getElementById("checkWalletBtn");
     const resultsContent = document.getElementById("results-content");
